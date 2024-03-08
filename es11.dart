@@ -25,12 +25,18 @@ Map<int, String> commands = {
 };
 
 List<String> convertToCommand(int number) {
+  // check valid input number
   if (number < 1 || number > 31) {
     return ['Input a valid number'];
   }
+  // convert number to list of binary digits
   List<String> binarynumber =
       number.toRadixString(2).split('').reversed.toList();
+  
+  // initialize the output list
   List<String> output = [];
+  
+  // loop over the binary list and add the correct command as needed
   for (int i = 0; i < binarynumber.length; i++) {
     if (binarynumber[i] == '1') {
       if (commands.containsKey(i)) {
@@ -38,53 +44,10 @@ List<String> convertToCommand(int number) {
       }
     }
   }
+  // if the command needs to be reversed, do it
   if(output.last == 'reverse'){
     output.remove('reverse');
     output = output.reversed.toList();
   }
   return output;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-// void main(List<String> args) {
-//   int number = 26;
-//   print(commands(number));
-// }
-
-// Map<int, String> values = {
-//   0: 'wink',
-//   1: 'double blink',
-//   2: 'close your eyes',
-//   3: 'jump',
-//   4: 'reverse',
-// };
-
-// List<String> commands(int number) {
-//   List<String> binaryNumber =
-//       number.toRadixString(2).split('').reversed.toList();
-//   List<String> result = [];
-
-//   for (int i = 0; i < binaryNumber.length; i++) {
-//     if (binaryNumber[i] == '1') {
-//       result.add(values[i] ?? '');
-//     }
-//   }
-
-//   if (result.isNotEmpty && result.last == 'reverse') {
-//     result.remove('reverse');
-//     return result.reversed.toList();
-//   }
-
-//   return result;
-// }

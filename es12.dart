@@ -2,18 +2,25 @@
 // all the elements of the first list minus all the duplicates.
 
 void main(List<String> args) {
+  // list of numbers with duplicates
   List<int> input = [1, 4, 1, 2, 3, 1, 2, 4, 6, 7];
+  print(removeDuplicates(input));
+  // it works the same with strings
   List<String> inputstr = ['a', 'b', 'a'];
   print(removeDuplicates(inputstr));
 }
 
 List removeDuplicates(List input) {
   List output = [];
+  
+  // standard for-in loop
 /*  for (var element in input) {
     if (!output.contains(element)) {
       output.add(element);
     }
   } */
+
+  //using the forEach method of the list
   input.forEach((element) {
     if (!output.contains(element)) {
       output.add(element);
